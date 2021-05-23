@@ -631,6 +631,17 @@ func (m *MediaFile) IsJpeg() bool {
 	return m.MimeType() == fs.MimeTypeJpeg
 }
 
+// IsMovieThumb returns true if this media file was exported from a movie
+func (m *MediaFile) IsMovieThumb() bool {
+	if strings.Contains(m.fileName, ".mov.") {
+		log.Warnf("gwyn: %s is a movie thumb", m.fileName)
+		return true
+	} else {
+		log.Warnf("gwyn: %s is not a movie thumb", m.fileName)
+		return false
+	}
+}
+
 // IsPng returns true if this is a PNG file.
 func (m *MediaFile) IsPng() bool {
 	return m.MimeType() == fs.MimeTypePng

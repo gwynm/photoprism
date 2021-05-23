@@ -265,10 +265,10 @@ func (ind *Index) MediaFile(m *MediaFile, o IndexOptions, originalName string) (
 	if !file.FilePrimary {
 		if photoExists {
 			if q := entity.UnscopedDb().Where("file_type = 'jpg' AND file_primary = 1 AND photo_id = ?", photo.ID).First(&primaryFile); q.Error != nil {
-				file.FilePrimary = m.IsJpeg()
+				file.FilePrimary = m.IsJpeg() && !m.IsMovieThumb()
 			}
 		} else {
-			file.FilePrimary = m.IsJpeg()
+			file.FilePrimary = m.IsJpeg() && !m.IsMovieThumb()
 		}
 	}
 
