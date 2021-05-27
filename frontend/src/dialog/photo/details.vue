@@ -187,6 +187,7 @@
                     :rows="1"
                     color="secondary-dark"
                     class="input-description"
+                    @keydown.enter.prevent="save(false)"
                 ></v-textarea>
               </v-flex>
 
