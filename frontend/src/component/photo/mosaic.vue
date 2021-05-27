@@ -10,8 +10,6 @@
             <translate>Couldn't find anything</translate>
           </h3>
           <p class="mt-4 mb-0 pa-0">
-                        <p>THIS IS A TEST!!</p>
-
             <translate>Try again using other filters or keywords.</translate>
             <translate>If a file you expect is missing, please re-index your library and wait until indexing has been completed.</translate>
             <template v-if="$config.feature('review')" class="mt-2 mb-0 pa-0">
@@ -36,8 +34,8 @@
                 @contextmenu.stop="onContextMenu($event, index)">
           <v-img :key="photo.Hash"
                  :src="photo.thumbnailUrl('tile_224')"
-                 :alt="photo.Title"
-                 :title="photo.Title"
+                 :alt="photo.Description"
+                 :title="photo.Description"
                  :transition="false"
                  aspect-ratio="1"
                  class="accent lighten-2 clickable"
@@ -61,8 +59,6 @@
                    @touchend.stop.prevent="onOpen($event, index, true)"
                    @touchmove.stop.prevent
                    @click.stop.prevent="onOpen($event, index, true)">
-              <v-icon color="white" class="default-hidden action-raw" :title="$gettext('RAW')">photo_camera</v-icon>
-              <v-icon color="white" class="default-hidden action-live" :title="$gettext('Live')">$vuetify.icons.live_photo</v-icon>
               <v-icon color="white" class="default-hidden action-play" :title="$gettext('Video')">play_arrow</v-icon>
               <v-icon color="white" class="default-hidden action-stack" :title="$gettext('Stack')">burst_mode</v-icon>
             </v-btn>
