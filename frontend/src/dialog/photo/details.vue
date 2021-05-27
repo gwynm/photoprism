@@ -175,6 +175,7 @@
 
               <v-flex xs12 class="pa-2">
                 <v-textarea
+                    ref="refDescription"
                     v-model="model.Description"
                     :append-icon="model.DescriptionSrc === 'manual' ? 'check' : ''"
                     :disabled="disabled"
@@ -278,6 +279,14 @@ export default {
   },
   created() {
     this.updateTime();
+  },
+  mounted() {
+    this.$nextTick(() => {
+      const theElement = this.$refs.refDescription;       
+      setTimeout(() => {
+        theElement.focus();
+      }, 1);
+    });
   },
   methods: {
     updateTime() {
