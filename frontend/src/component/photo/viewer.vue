@@ -17,6 +17,11 @@
 
           <button class="pswp__button pswp__button--close action-close" :title="$gettext('Close')"></button>
 
+          <button class="pswp__button action-archive" style="background: none;"
+                  :title="$gettext('Archive')" @click.exact="onArchive">
+            <v-icon size="16" color="white">archive</v-icon>
+          </button>
+
           <button v-if="config.settings.features.download" class="pswp__button action-download" style="background: none;"
                   :title="$gettext('Download')" @click.exact="onDownload">
             <v-icon size="16" color="white">get_app</v-icon>
@@ -90,6 +95,7 @@ import Event from "pubsub-js";
 import Thumb from "model/thumb";
 import Photo from "model/photo";
 import Notify from "common/notify";
+import Api from "common/api";
 
 export default {
   name: "PPhotoViewer",
@@ -255,6 +261,10 @@ export default {
       g.close(); // Close Gallery
 
       Event.publish("dialog.edit", {selection, album, index}); // Open Edit Dialog
+    },
+    onArchive() {
+      this.onPause();
+      Api.post("batch/photos/archive", {"photos": [this.item.uid]});
     }
   }
 };
