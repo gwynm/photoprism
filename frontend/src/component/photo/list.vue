@@ -37,7 +37,7 @@
         <td style="user-select: none;" :data-uid="props.item.UID" class="result" :class="props.item.classes()">
           <v-img :key="props.item.Hash"
                  :src="props.item.thumbnailUrl('tile_50')"
-                 :alt="props.item.Title"
+                 :alt="props.item.Description"
                  :transition="false"
                  aspect-ratio="1"
                  style="user-select: none"
@@ -66,7 +66,7 @@
 
         <td class="p-photo-desc clickable" :data-uid="props.item.UID" style="user-select: none;"
             @click.exact="editPhoto(props.index)">
-          {{ props.item.Title }}
+          {{ props.item.Description }}
         </td>
         <td class="p-photo-desc hidden-xs-only" :title="props.item.getDateString()">
           <button style="user-select: none;" @click.stop.prevent="editPhoto(props.index)">
