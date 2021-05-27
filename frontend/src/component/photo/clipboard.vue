@@ -195,11 +195,7 @@ export default {
       this.clearClipboard();
     },
     archivePhotos() {
-      if (!this.features.delete) {
-        this.dialog.archive = true;
-      } else {
-        this.batchArchive();
-      }
+      this.batchArchive();
     },
     batchArchive() {
       this.dialog.archive = false;
