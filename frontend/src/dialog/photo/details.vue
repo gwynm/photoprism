@@ -24,21 +24,6 @@
           </v-flex>
           <v-flex xs12 sm8 md10 fill-height>
             <v-layout row wrap>
-              <v-flex xs12 class="pa-2">
-                <v-text-field
-                    v-model="model.Title"
-                    :append-icon="model.TitleSrc === 'manual' ? 'check' : ''"
-                    :disabled="disabled"
-                    :rules="[textRule]"
-                    hide-details
-                    :label="$gettext('Title')"
-                    placeholder=""
-                    color="secondary-dark"
-                    browser-autocomplete="off"
-                    class="input-title"
-                ></v-text-field>
-              </v-flex>
-
               <v-flex xs4 md2 pa-2>
                 <v-autocomplete
                     v-model="model.Day"
@@ -188,154 +173,6 @@
                 ></v-text-field>
               </v-flex>
 
-              <v-flex xs12 md6 pa-2 class="p-camera-select">
-                <v-select
-                    v-model="model.CameraID"
-                    :append-icon="model.CameraSrc === 'manual' ? 'check' : ''"
-                    :disabled="disabled"
-                    :label="$gettext('Camera')"
-                    browser-autocomplete="off"
-                    hide-details
-                    color="secondary-dark"
-                    item-value="ID"
-                    item-text="Name"
-                    :items="cameraOptions"
-                    class="input-camera">
-                </v-select>
-              </v-flex>
-
-              <v-flex xs6 md3 class="pa-2">
-                <v-text-field
-                    v-model="model.Iso"
-                    :disabled="disabled"
-                    hide-details
-                    browser-autocomplete="off"
-                    label="ISO"
-                    placeholder=""
-                    color="secondary-dark"
-                    class="input-iso"
-                ></v-text-field>
-              </v-flex>
-
-              <v-flex xs6 md3 class="pa-2">
-                <v-text-field
-                    v-model="model.Exposure"
-                    :disabled="disabled"
-                    hide-details
-                    browser-autocomplete="off"
-                    :label="$gettext('Exposure')"
-                    placeholder=""
-                    color="secondary-dark"
-                    class="input-exposure"
-                ></v-text-field>
-              </v-flex>
-
-              <v-flex xs12 md6 pa-2 class="p-lens-select">
-                <v-select
-                    v-model="model.LensID"
-                    :append-icon="model.CameraSrc === 'manual' ? 'check' : ''"
-                    :disabled="disabled"
-                    :label="$gettext('Lens')"
-                    browser-autocomplete="off"
-                    hide-details
-                    color="secondary-dark"
-                    item-value="ID"
-                    item-text="Name"
-                    :items="lensOptions"
-                    class="input-lens">
-                </v-select>
-              </v-flex>
-
-              <v-flex xs6 md3 class="pa-2">
-                <v-text-field
-                    v-model="model.FNumber"
-                    :disabled="disabled"
-                    hide-details
-                    browser-autocomplete="off"
-                    :label="$gettext('F Number')"
-                    placeholder=""
-                    color="secondary-dark"
-                    class="input-fnumber"
-                ></v-text-field>
-              </v-flex>
-
-              <v-flex xs6 md3 class="pa-2">
-                <v-text-field
-                    v-model="model.FocalLength"
-                    :disabled="disabled"
-                    hide-details
-                    browser-autocomplete="off"
-                    :label="$gettext('Focal Length')"
-                    placeholder=""
-                    color="secondary-dark"
-                    class="input-focal-length"
-                ></v-text-field>
-              </v-flex>
-
-              <v-flex xs12 sm6 md3 class="pa-2">
-                <v-textarea
-                    v-model="model.Details.Subject"
-                    :append-icon="model.Details.SubjectSrc === 'manual' ? 'check' : ''"
-                    :disabled="disabled"
-                    :rules="[textRule]"
-                    hide-details
-                    browser-autocomplete="off"
-                    auto-grow
-                    :label="$gettext('Subject')"
-                    placeholder=""
-                    :rows="1"
-                    color="secondary-dark"
-                    class="input-subject"
-                ></v-textarea>
-              </v-flex>
-
-              <v-flex xs12 sm6 md3 class="pa-2">
-                <v-text-field
-                    v-model="model.Details.Artist"
-                    :append-icon="model.Details.ArtistSrc === 'manual' ? 'check' : ''"
-                    :disabled="disabled"
-                    :rules="[textRule]"
-                    hide-details
-                    browser-autocomplete="off"
-                    :label="$gettext('Artist')"
-                    placeholder=""
-                    color="secondary-dark"
-                    class="input-artist"
-                ></v-text-field>
-              </v-flex>
-
-              <v-flex xs12 sm6 md3 class="pa-2">
-                <v-text-field
-                    v-model="model.Details.Copyright"
-                    :append-icon="model.Details.CopyrightSrc === 'manual' ? 'check' : ''"
-                    :disabled="disabled"
-                    :rules="[textRule]"
-                    hide-details
-                    browser-autocomplete="off"
-                    :label="$gettext('Copyright')"
-                    placeholder=""
-                    color="secondary-dark"
-                    class="input-copyright"
-                ></v-text-field>
-              </v-flex>
-
-              <v-flex xs12 sm6 md3 class="pa-2">
-                <v-textarea
-                    v-model="model.Details.License"
-                    :append-icon="model.Details.LicenseSrc === 'manual' ? 'check' : ''"
-                    :disabled="disabled"
-                    :rules="[textRule]"
-                    hide-details
-                    browser-autocomplete="off"
-                    auto-grow
-                    :label="$gettext('License')"
-                    placeholder=""
-                    :rows="1"
-                    color="secondary-dark"
-                    class="input-license"
-                ></v-textarea>
-              </v-flex>
-
               <v-flex xs12 class="pa-2">
                 <v-textarea
                     v-model="model.Description"
@@ -365,22 +202,6 @@
                     :rows="1"
                     color="secondary-dark"
                     class="input-keywords"
-                ></v-textarea>
-              </v-flex>
-
-              <v-flex xs12 md6 class="pa-2">
-                <v-textarea
-                    v-model="model.Details.Notes"
-                    :append-icon="model.Details.NotesSrc === 'manual' ? 'check' : ''"
-                    :disabled="disabled"
-                    hide-details
-                    browser-autocomplete="off"
-                    auto-grow
-                    :label="$gettext('Notes')"
-                    placeholder=""
-                    :rows="1"
-                    color="secondary-dark"
-                    class="input-notes"
                 ></v-textarea>
               </v-flex>
 
