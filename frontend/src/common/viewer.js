@@ -124,22 +124,22 @@ class Viewer {
         // isFake    - true when content is added to fake caption container
         //             (used to get size of next or previous caption)
 
-        if (!item.title) {
+        if (!item.description) {
           captionEl.children[0].innerHTML = "";
           return false;
         }
 
-        captionEl.children[0].innerHTML = Util.encodeHTML(item.title);
+        captionEl.children[0].innerHTML = Util.encodeHTML(item.description);
 
         if (item.playable) {
           captionEl.children[0].innerHTML +=
             ' <i aria-hidden="true" class="v-icon material-icons theme--dark" title="Play">play_circle_fill</i>';
         }
 
-        if (item.description) {
-          captionEl.children[0].innerHTML +=
-            '<br><span class="description">' + Util.encodeHTML(item.description) + "</span>";
-        }
+        // if (item.description) {
+        //   captionEl.children[0].innerHTML +=
+        //     '<br><span class="description">' + Util.encodeHTML(item.description) + "</span>";
+        // }
 
         if (item.playable) {
           captionEl.children[0].innerHTML =
