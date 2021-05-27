@@ -65,6 +65,13 @@ const DATE_FULL = {
   minute: num,
 };
 
+const DATE_SHORT = {
+  weekday: short,
+  day: num,
+  month: short,
+  year: num,
+};
+
 const DATE_FULL_TZ = {
   year: num,
   month: long,
@@ -526,7 +533,6 @@ export class Photo extends RestModel {
     } else if (this.TimeZone) {
       return this.localDate().toLocaleString(showTimeZone ? DATE_FULL_TZ : DATE_FULL);
     }
-
     return this.localDate().toLocaleString(DateTime.DATE_HUGE);
   }
 
@@ -539,7 +545,7 @@ export class Photo extends RestModel {
       return this.localDate().toLocaleString({ month: "long", year: "numeric" });
     }
 
-    return this.localDate().toLocaleString(DateTime.DATE_MED);
+    return this.localDate().toLocaleString(DATE_SHORT);
   }
 
   hasLocation() {

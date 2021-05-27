@@ -141,47 +141,27 @@
               <h3 class="body-2 mb-2" :title="photo.Title">
                 <button class="action-title-edit" :data-uid="photo.UID"
                         @click.exact="editPhoto(index)">
-                  {{ photo.Title | truncate(80) }}
+                  {{ photo.Description | truncate(80) }} 
                 </button>
               </h3>
-              <div v-if="photo.Description" class="caption mb-2" :title="labels.description">
-                <button @click.exact="editPhoto(index)">
-                  {{ photo.Description }}
-                </button>
-              </div>
               <div class="caption">
+                <template v-if="showLocation && photo.Country !== 'zz'">
+                  <button :title="labels.location" class="action-location"
+                          :data-uid="photo.UID" @click.exact="openLocation(index)">
+                    <v-icon size="14">location_on</v-icon>
+                  </button>
+                </template>
                 <button class="action-date-edit" :data-uid="photo.UID"
                         @click.exact="editPhoto(index)">
                   <v-icon size="14" :title="labels.taken">date_range</v-icon>
-                  {{ photo.getDateString(true) }}
+                  {{ photo.shortDateString() }}
                 </button>
-                <template v-if="!photo.Description">
-                  <br/>
-                  <button v-if="photo.Type === 'video'" :title="labels.video"
-                          @click.exact="openPhoto(index, true)">
-                    <v-icon size="14">movie</v-icon>
-                    {{ photo.getVideoInfo() }}
-                  </button>
-                  <button v-else :title="labels.camera" class="action-camera-edit"
-                          :data-uid="photo.UID" @click.exact="editPhoto(index)">
-                    <v-icon size="14">photo_camera</v-icon>
-                    {{ photo.getPhotoInfo() }}
-                  </button>
-                </template>
                 <template v-if="filter.order === 'name' && $config.feature('download')">
                   <br/>
                   <button :title="labels.name"
                           @click.exact="downloadFile(index)">
                     <v-icon size="14">insert_drive_file</v-icon>
                     {{ photo.baseName() }}
-                  </button>
-                </template>
-                <template v-if="showLocation && photo.Country !== 'zz'">
-                  <br/>
-                  <button :title="labels.location" class="action-location"
-                          :data-uid="photo.UID" @click.exact="openLocation(index)">
-                    <v-icon size="14">location_on</v-icon>
-                    {{ photo.locationInfo() }}
                   </button>
                 </template>
               </div>
