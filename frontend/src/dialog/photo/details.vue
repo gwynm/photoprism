@@ -11,7 +11,7 @@
           >
             <v-card tile
                     class="ma-1 elevation-0"
-                    :title="model.Title">
+                    :title="model.Description">
               <v-img v-touch="{left, right}"
                      :src="model.thumbnailUrl('tile_500')"
                      aspect-ratio="1"
