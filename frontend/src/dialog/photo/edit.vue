@@ -6,7 +6,7 @@
         <v-btn icon dark class="action-close" @click.stop="close">
           <v-icon>close</v-icon>
         </v-btn>
-        <v-toolbar-title>{{ title }}
+        <v-toolbar-title>{{ title | truncate(80)}}
           <v-icon v-if="isPrivate" title="Private">lock</v-icon>
         </v-toolbar-title>
         <v-spacer></v-spacer>
@@ -106,8 +106,8 @@ export default {
   },
   computed: {
     title: function () {
-      if (this.model && this.model.Title) {
-        return this.model.Title;
+      if (this.model && this.model.Description) {
+        return this.model.Description;
       }
 
       this.$gettext("Edit Photo");
