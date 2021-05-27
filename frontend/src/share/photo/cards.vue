@@ -9,8 +9,7 @@
           <h3 v-else class="title ma-0 pa-0">
             <translate>Couldn't find anything</translate>
           </h3>
-          <p class="mt-4 mb-0 pa-0">              <p>THIS IS A TEST!!</p>
-
+          <p class="mt-4 mb-0 pa-0">
             <translate>Try again using other filters or keywords.</translate>
           </p>
         </div>
