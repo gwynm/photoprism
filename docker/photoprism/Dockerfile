@@ -128,6 +128,9 @@ RUN mkdir -p \
     chown -Rf photoprism:photoprism /photoprism /var/lib/photoprism /tmp/photoprism && \
     chmod -Rf a+rw /photoprism /var/lib/photoprism /tmp/photoprism
 
+# Setup automatic backups
+COPY /scripts/backup_to_s3.sh /etc/cron.daily
+
 # Show photoprism version
 RUN photoprism -v
 
