@@ -24,6 +24,7 @@ RUN echo 'Acquire::Retries "10";' > /etc/apt/apt.conf.d/80retry && \
 RUN apt-get update && apt-get install -y --no-install-recommends \
         wget \
         curl \
+        unzip \
         davfs2 \
         ca-certificates \
         mariadb-client \
@@ -45,6 +46,9 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
         apt-get autoremove && \
         apt-get clean && \
         rm -rf /var/lib/apt/lists/*
+
+# Install rclone for backups
+RUN curl https://rclone.org/install.sh | bash
 
 # Copy dependencies
 COPY --from=build /go/bin/gosu /bin/gosu

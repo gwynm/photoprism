@@ -74,6 +74,10 @@ services:
       PHOTOPRISM_THUMB_SIZE_UNCACHED: 7680    # On-demand rendering size limit (default 7680, min 720, max 7680)
       PHOTOPRISM_JPEG_SIZE: 7680              # Size limit for converted image files in pixels (720-30000)
       PHOTOPRISM_JPEG_QUALITY: 92             # Set to 95 for high-quality thumbnails (25-100)
+      AWS_ACCESS_KEY: 
+      AWS_SECRET_KEY: 
+      AWS_BUCKET: 
+      AWS_REGION: 
   photoprism-db:
     image: mariadb:10.5
     command: mysqld --port=4001 --transaction-isolation=READ-COMMITTED --character-set-server=utf8mb4 --collation-server=utf8mb4_unicode_ci --max-connections=512 --innodb-rollback-on-timeout=OFF --innodb-lock-wait-timeout=50
