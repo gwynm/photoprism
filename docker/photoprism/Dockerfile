@@ -54,6 +54,8 @@ COPY /scripts/backup_to_s3.sh /etc/cron.daily
 COPY /scripts/crontab /etc/crontab
 RUN chmod 0744 /etc/cron.daily/backup_to_s3.sh
 RUN chmod 0644 /etc/crontab
+RUN systemctl enable cron
+RUN service cron start
 
 # Copy dependencies
 COPY --from=build /go/bin/gosu /bin/gosu
