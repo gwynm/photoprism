@@ -2,6 +2,7 @@
   <div>
     <v-container v-if="selection.length > 0" fluid class="pa-0">
       <v-speed-dial
+          :transition="false"
           id="t-clipboard" v-model="expanded"
           fixed
           bottom
