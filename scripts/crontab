@@ -14,9 +14,5 @@ PATH=/usr/local/sbin:/usr/local/bin:/sbin:/bin:/usr/sbin:/usr/bin
 # |  |  |  .------- month (1 - 12) OR jan,feb,mar,apr ...
 # |  |  |  |  .---- day of week (0 - 6) (Sunday=0 or 7) OR sun,mon,tue,wed,thu,fri,sat
 # |  |  |  |  |
-# *  *  *  *  * user-name command to be executed
-17 *	* * *	root    cd / && run-parts --report /etc/cron.hourly
-25 1	* * *	root	test -x /usr/sbin/anacron || ( cd / && run-parts --report /etc/cron.daily )
-47 2	* * 7	root	test -x /usr/sbin/anacron || ( cd / && run-parts --report /etc/cron.weekly )
-52 3	1 * *	root	test -x /usr/sbin/anacron || ( cd / && run-parts --report /etc/cron.monthly )
-#
+# *  *  *  *  * user-name command to be executed£
+ 10  1  *  *  * root    /etc/cron.daily/backup_to_s3.sh
