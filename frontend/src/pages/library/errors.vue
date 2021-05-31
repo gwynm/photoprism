@@ -54,6 +54,7 @@
     </v-card>
 
     <v-dialog
+        :transition="false" 
         v-model="details.show"
         max-width="500"
     >

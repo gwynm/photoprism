@@ -1,5 +1,4 @@
 <template>
-  <transition name="fade-transition">
     <v-btn
         v-if="show"
         color="transparent"
@@ -11,7 +10,6 @@
     >
       <v-icon>arrow_upward</v-icon>
     </v-btn>
-  </transition>
 </template>
 
 <script>

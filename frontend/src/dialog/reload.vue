@@ -1,5 +1,5 @@
 <template>
-  <v-dialog v-model="visible" max-width="300">
+  <v-dialog :transition="false" v-model="visible" max-width="300">
     <v-card>
       <v-card-title class="subheading pa-3">
         <translate>PhotoPrism has been updated…</translate>

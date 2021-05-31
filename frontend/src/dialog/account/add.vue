@@ -1,5 +1,5 @@
 <template>
-  <v-dialog v-model="show" lazy persistent max-width="500" class="p-account-create-dialog" @keydown.esc="cancel">
+  <v-dialog :transition="false"  v-model="show" lazy persistent max-width="500" class="p-account-create-dialog" @keydown.esc="cancel">
     <v-card raised elevation="24">
       <v-card-title primary-title>
         <div>

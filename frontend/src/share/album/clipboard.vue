@@ -6,7 +6,6 @@
           bottom
           right
           direction="top"
-          transition="slide-y-reverse-transition"
           class="p-clipboard p-album-clipboard"
       >
         <template #activator>

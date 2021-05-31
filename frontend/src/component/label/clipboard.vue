@@ -6,7 +6,6 @@
           fixed
           bottom
           direction="top"
-          transition="slide-y-reverse-transition"
           :right="!rtl"
           :left="rtl"
           :class="`p-clipboard ${!rtl ? '--ltr' : '--rtl'} p-label-clipboard`"

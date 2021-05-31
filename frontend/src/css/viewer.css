@@ -101,12 +101,9 @@
     margin: 0;
     float: left;
     opacity: 0.75;
-    -webkit-transition: opacity 0.2s;
-    transition: opacity 0.2s;
     -webkit-box-shadow: none;
     box-shadow: none;
 }
 
 #photo-viewer .pswp__container.slideshow {
-    transition: transform 0.8s ease-in-out;
 }

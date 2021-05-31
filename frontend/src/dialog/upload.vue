@@ -1,5 +1,5 @@
 <template>
-  <v-dialog v-model="show" fullscreen hide-overlay scrollable
+  <v-dialog :transition="false" v-model="show" fullscreen hide-overlay scrollable
             lazy persistent class="p-upload-dialog" @keydown.esc="cancel">
     <v-card color="application">
       <v-toolbar dark flat color="navigation" :dense="$vuetify.breakpoint.smAndDown">
