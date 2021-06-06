@@ -55,6 +55,10 @@
             <v-icon v-show="interval" size="16" color="white">pause</v-icon>
           </button>
 
+          <button class="pswp__button" style="background: none;"  :title="$gettext('Play motion')" @click.exact="onPlay">
+            <v-icon size="18" color="white">play_arrow</v-icon>
+          </button>
+
           <div class="pswp__preloader">
             <div class="pswp__preloader__icn">
               <div class="pswp__preloader__cut">
@@ -74,8 +78,9 @@
         <button class="pswp__button pswp__button--arrow--right action-next" title="Next (arrow right)">
         </button>
 
-        <div class="pswp__caption" @click="onPlay">
+        <div class="pswp__caption" @click="onToggleEditMode">
           <div class="pswp__caption__center"></div>
+          <div v-if="editMode">EDIT MODE</div>
         </div>
 
       </div>
@@ -101,6 +106,7 @@ export default {
   name: "PPhotoViewer",
   data() {
     return {
+      editMode: false,
       selection: this.$clipboard.selection,
       config: this.$config.values,
       item: new Thumb(),
@@ -166,6 +172,9 @@ export default {
       if (this.item && this.item.playable) {
         new Photo().find(this.item.uid).then((video) => this.openPlayer(video));
       }
+    },
+    onToggleEditMode() {
+      this.editMode = !this.editMode;
     },
     openPlayer(video) {
       if (!video) {
