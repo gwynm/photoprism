@@ -25,7 +25,6 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
         wget \
         curl \
         unzip \
-        cron \
         davfs2 \
         ca-certificates \
         mariadb-client \
@@ -48,14 +47,11 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
         apt-get clean && \
         rm -rf /var/lib/apt/lists/*
 
-# Setup backups
+# Setup backups. Cron doesn't work inside docker so we rely on the host 
+# to have a cronjob that'll call sudo docker exec photoprism /etc/cron.daily/backup_to_s3.sh
 RUN curl https://rclone.org/install.sh | bash
 COPY /scripts/backup_to_s3.sh /etc/cron.daily
-COPY /scripts/crontab /etc/crontab
 RUN chmod 0744 /etc/cron.daily/backup_to_s3.sh
-RUN chmod 0644 /etc/crontab
-RUN systemctl enable cron
-RUN service cron start
 
 # Copy dependencies
 COPY --from=build /go/bin/gosu /bin/gosu
