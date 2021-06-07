@@ -78,11 +78,22 @@
         <button class="pswp__button pswp__button--arrow--right action-next" title="Next (arrow right)">
         </button>
 
-        <div class="pswp__caption" @click="onToggleEditMode">
-          <div class="pswp__caption__center"></div>
-          <div v-if="editMode">EDIT MODE</div>
+        <div class="pswp__caption">
+          <div @click="onOpenEditMode" v-show="!editMode" class="pswp__caption__center"><!-- caption is written in here by viewer.js --></div>
+          <div v-show="editMode" style='color:#ff0000'>
+            <v-text-field 
+              ref="editDescriptionText"
+              hide-details 
+              background-color="red" 
+              color="green" 
+              autofocus 
+              full-width 
+              v-model="item.description"
+              @keydown.enter.prevent="onDescriptionSave"
+            />
+            EDIT MODE
+          </div>
         </div>
-
       </div>
     </div>
     <div v-if="player.show" class="video-viewer" @click.stop.prevent="closePlayer" @keydown.esc.stop.prevent="closePlayer">
@@ -274,6 +285,18 @@ export default {
     onArchive() {
       this.onPause();
       Api.post("batch/photos/archive", {"photos": [this.item.uid]});
+    },
+    onDescriptionSave() {
+      Api.put('/photos/' + this.item.uid, {Description: this.item.description});
+      this.onToggleEditMode();
+      this.editMode = false;
+    },
+    onOpenEditMode() {
+      this.editMode = true;
+      setTimeout(this.focusEditDescription, 50);
+    },
+    focusEditDescription() {
+      this.$refs.editDescriptionText.$refs.input.focus();
     }
   }
 };

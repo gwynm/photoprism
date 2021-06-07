@@ -808,6 +808,8 @@ export class Photo extends RestModel {
       }
     }
 
+    console.log("Performing update with",this.getEntityResource(), values);
+
     return Api.put(this.getEntityResource(), values).then((resp) => {
       if (values.Type || values.Lat) {
         config.update();

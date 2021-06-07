@@ -131,16 +131,6 @@ class Viewer {
 
         captionEl.children[0].innerHTML = Util.encodeHTML(item.description);
 
-        // if (item.description) {
-        //   captionEl.children[0].innerHTML +=
-        //     '<br><span class="description">' + Util.encodeHTML(item.description) + "</span>";
-        // }
-
-        if (item.playable) {
-          captionEl.children[0].innerHTML =
-            "<button>" + captionEl.children[0].innerHTML + "</button>";
-        }
-
         return true;
       },
     };
