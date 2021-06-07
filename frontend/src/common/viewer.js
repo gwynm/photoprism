@@ -125,7 +125,7 @@ class Viewer {
         //             (used to get size of next or previous caption)
 
         if (!item.description) {
-          captionEl.children[0].innerHTML = "";
+          captionEl.children[0].innerHTML = "[no caption]";
           return false;
         }
 

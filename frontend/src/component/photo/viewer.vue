@@ -84,9 +84,9 @@
             <v-text-field 
               ref="editDescriptionText"
               hide-details 
-              background-color="red" 
-              color="green" 
+              color="white" 
               autofocus 
+              class='pswp__description-edit'
               full-width 
               v-model="item.description"
               @keydown.enter.prevent="onDescriptionSave"

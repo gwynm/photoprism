@@ -107,3 +107,9 @@
 
 #photo-viewer .pswp__container.slideshow {
 }
+
+
+#photoprism .pswp__description-edit input {
+    color: #FFFFFF;
+    text-align:center;
+}
