@@ -79,7 +79,7 @@
         </button>
 
         <div class="pswp__caption">
-          <div @click="onOpenEditMode" v-show="!editMode" class="pswp__caption__center"><!-- caption is written in here by viewer.js --></div>
+          <div @click="onOpenEditMode" v-show="!editMode" class="pswp__caption__center"></div>
           <div v-show="editMode" style='color:#ff0000'>
             <v-text-field 
               ref="editDescriptionText"
@@ -91,7 +91,6 @@
               v-model="item.description"
               @keydown.enter.prevent="onDescriptionSave"
             />
-            EDIT MODE
           </div>
         </div>
       </div>
@@ -285,11 +284,14 @@ export default {
     onArchive() {
       this.onPause();
       Api.post("batch/photos/archive", {"photos": [this.item.uid]});
+      this.$viewer.gallery.next();
     },
     onDescriptionSave() {
       Api.put('/photos/' + this.item.uid, {Description: this.item.description});
       this.onToggleEditMode();
       this.editMode = false;
+      this.$viewer.gallery.next();
+      this.$viewer.gallery.prev();
     },
     onOpenEditMode() {
       this.editMode = true;
