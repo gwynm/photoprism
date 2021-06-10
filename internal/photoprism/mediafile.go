@@ -314,7 +314,7 @@ func (m *MediaFile) RelatedFiles(stripSequence bool) (result RelatedFiles, err e
 			result.Main = f
 		} else if f.IsImageOther() {
 			result.Main = f
-		} else if f.IsVideo() {
+		} else if result.Main == nil && f.IsVideo() {
 			result.Main = f
 		} else if result.Main != nil && f.IsJpeg() {
 			if result.Main.IsJpeg() && len(result.Main.FileName()) > len(f.FileName()) {
