@@ -52,6 +52,8 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
 RUN curl https://rclone.org/install.sh | bash
 COPY /scripts/backup_to_s3.sh /etc/cron.daily
 RUN chmod 0744 /etc/cron.daily/backup_to_s3.sh
+COPY /scripts/convert.sh /etc/cron.daily
+RUN chmod 0744 /etc/cron.daily/convert.sh
 
 # Copy dependencies
 COPY --from=build /go/bin/gosu /bin/gosu
